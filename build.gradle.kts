@@ -5,11 +5,12 @@ buildscript {
     }
 
     dependencies {
-        classpath(Dependency.GradlePlugin.android)
-        classpath(Dependency.GradlePlugin.kotlin)
-        classpath(Dependency.GradlePlugin.hilt)
+        classpath(Dependency.GradlePlugin.GRADLE_ANDROID)
+        classpath(Dependency.GradlePlugin.GRADLE_KOTLIN)
+        classpath(Dependency.GradlePlugin.GRADLE_HILT)
     }
 }
-task("clean", Delete::class) {
+
+tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)
 }

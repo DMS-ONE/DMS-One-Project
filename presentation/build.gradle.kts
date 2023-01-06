@@ -1,23 +1,31 @@
 plugins {
-    id("com.android.application")
-    id("dagger.hilt.android.plugin")
-    kotlin("android")
-    kotlin("kapt")
+    id(BuildPlugins.ANDROID_APPLICATION_PLUGIN)
+    id(BuildPlugins.DAGGER_HILT_PLUGIN)
+    id(BuildPlugins.KOTLIN_ANDROID)
+    id(BuildPlugins.KOTLIN_KAPT)
 }
 
 android {
-    compileSdk = Project.compileSdk
+    compileSdk = ProjectProperties.COMPILE_SDK_VERSION
 
     defaultConfig {
-        applicationId = "com.yongjincompany.app"
-        minSdk = Project.minSdk
-        targetSdk = Project.targetSdk
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = ProjectProperties.APPLICATION_ID
+        minSdk = ProjectProperties.MIN_SDK_VERSION
+        targetSdk = ProjectProperties.TARGET_SDK_VERSION
+        versionCode = ProjectProperties.VERSION_CODE
+        versionName = ProjectProperties.VERSION_NAME
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    buildFeatures {
+        dataBinding = true
+        compose = true
+        viewBinding = true
+    }
+
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -25,83 +33,72 @@ android {
             )
         }
     }
+
     compileOptions {
-        sourceCompatibility = Project.javaVersion
-        targetCompatibility = Project.javaVersion
+        sourceCompatibility = ProjectProperties.JAVA_VERSION
+        targetCompatibility = ProjectProperties.JAVA_VERSION
     }
+
     composeOptions {
-        kotlinCompilerExtensionVersion = Version.UI.jetpackCompose
+        kotlinCompilerExtensionVersion = Versions.COMPOSE
+        kotlinCompilerVersion = ProjectProperties.KOTLIN_VERSION
+    }
+
+    packagingOptions {
+        exclude("META-INF/gradle/incremental.annotation.processors")
     }
     kotlinOptions {
-        jvmTarget = "11"
-    }
-    buildFeatures {
-        dataBinding = true
-        compose = true
+        jvmTarget = ProjectProperties.JAVA_VERSION.toString()
     }
 }
 
 dependencies {
     implementation(project(":domain"))
+    implementation(project(":di"))
 
-    implementation(Dependency.Moshi.moshi)
-    kapt(Dependency.Moshi.moshiCompiler)
-    implementation(Dependency.Moshi.moshiKotlin)
+    implementation(Dependency.Ui.CORE_KTX)
+    implementation(Dependency.Ui.APP_COMPAT)
+    implementation(Dependency.Ui.MATERIAL)
+    implementation(Dependency.Ui.CONSTRAINT_LAYOUT)
+    implementation(Dependency.Ui.CIRCLE_IMAGE_VIEW)
+    implementation(Dependency.Ui.GLIDE_CORE)
+    implementation(Dependency.Ui.FRAGMENT_KTX)
+    kapt(Dependency.Ui.GLIDE_COMPILER)
 
-    implementation(Dependency.coreKtx)
-    implementation(Dependency.appcompat)
-    implementation(Dependency.androidKtx)
-    implementation(Dependency.fragmentKtx)
+    implementation(Dependency.Compose.COMPOSE_ACTIVITY)
+    implementation(Dependency.Compose.COMPOSE_MATERIAL)
+    implementation(Dependency.Compose.COMPOSE_PREVIEW)
+    implementation(Dependency.Compose.COMPOSE_UI)
+    implementation(Dependency.Compose.COMPOSE_NAV)
+    implementation(Dependency.Compose.COMPOSE_ANI_NAV)
+    implementation(Dependency.Compose.COMPOSE_LANDSCAPIST)
+    implementation(Dependency.Compose.COMPOSE_HILT_NAV)
+    implementation(Dependency.Compose.COMPOSE_VIEWBINDING)
+    implementation(Dependency.Compose.COMPOSE_UI_UTIL)
 
-    implementation(Dependency.UI.material)
-    implementation(Dependency.UI.constraintLayout)
-    implementation(Dependency.UI.compose)
-    implementation(Dependency.UI.composeTooling)
-    implementation(Dependency.UI.composePreview)
-    implementation(Dependency.UI.composeMaterial)
-    implementation(Dependency.UI.composeCompiler)
-    implementation(Dependency.UI.activityCompose)
-    implementation(Dependency.UI.coilCompose)
+    implementation(Dependency.Navigation.NAVIGATION_FRAGMENT)
+    implementation(Dependency.Navigation.NAVIGATION_UI)
 
-    testImplementation(Dependency.Test.junit)
-    testImplementation(Dependency.Test.mockito)
-    androidTestImplementation(Dependency.Test.androidJunit)
-    androidTestImplementation(Dependency.Test.espresso)
+    implementation(Dependency.Hilt.HILT_ANDROID)
+    kapt(Dependency.Hilt.HILT_ANDROID_COMPILER)
 
-    implementation(Dependency.DI.hiltAndroid)
-    implementation(Dependency.DI.hiltCompose)
-    kapt(Dependency.DI.hiltCompiler)
+    implementation(Dependency.Ui.FRAGMENT_KTX_NEW)
 
-    implementation(Dependency.Network.retrofit)
-    implementation(Dependency.Network.gsonConverter)
-    implementation(Dependency.Network.okhttp)
-    implementation(Dependency.Network.loggingInterceptor)
+    implementation(Dependency.Lifecycle.LIVEDATA)
+    implementation(Dependency.Lifecycle.VIEWMODEL)
+    implementation(Dependency.Lifecycle.RUNTIME)
 
-    implementation(Dependency.LocalStorage.room)
-    kapt(Dependency.LocalStorage.roomCompiler)
+    implementation(Dependency.TedImagePicker.TEDIMAGEPICKER)
 
-    implementation(Dependency.Coroutine.core)
-    implementation(Dependency.Coroutine.android)
+    //TODO: 추후에 커스텀으로 만들 예정입니다.
+    implementation(Dependency.PinEntryEditText.PINENTRYEDITTEXT)
 
-    implementation(Dependency.Lifecycle.viewModel)
-    implementation(Dependency.Lifecycle.liveData)
-    implementation(Dependency.Lifecycle.runTime)
+    implementation(Dependency.ViewModel.VIEWMODEL)
+    implementation(Dependency.ViewModel.LIVEDATA)
 
-    implementation(Dependency.Navigation.navigationFragment)
-    implementation(Dependency.Navigation.navigationUi)
+    implementation(Dependency.UnitTest.JUNIT)
 
-    implementation(Dependency.WorkManager.ktx)
-    implementation(Dependency.WorkManager.hiltExtension)
-    implementation(Dependency.Permission.tedPermission)
-
-    implementation(Dependency.ThreeTenAndroidBackport.threeTenAbp)
-
-    implementation(Dependency.CircleImageView.circleImage)
-
-    implementation(Dependency.Glide.glideCore)
-    annotationProcessor(Dependency.Glide.glideCompiler)
-
-    implementation(Dependency.Socket.socketIo) {
-        exclude(group = "org.json", module = "json")
-    }
+    implementation(Dependency.Compose.VIEWPAGER)
+    implementation(Dependency.Compose.VIEWPAGERINDICATE)
+    implementation(Dependency.Ui.CIRCLECOMPOSEIMAGE)
 }

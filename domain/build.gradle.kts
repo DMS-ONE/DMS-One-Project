@@ -1,40 +1,45 @@
 plugins {
-    id("com.android.library")
-    kotlin("android")
+    id(BuildPlugins.ANDROID_LIBRARY_PLUGIN)
+    id(BuildPlugins.KOTLIN_ANDROID_PLUGIN)
+    id(BuildPlugins.DAGGER_HILT_PLUGIN)
+    id(BuildPlugins.KOTLIN_KAPT)
 }
 
 android {
-    compileSdk = Project.compileSdk
+    compileSdk = ProjectProperties.COMPILE_SDK_VERSION
 
     defaultConfig {
-        minSdk = Project.minSdk
-        targetSdk = Project.targetSdk
+        minSdk = ProjectProperties.MIN_SDK_VERSION
+        targetSdk = ProjectProperties.TARGET_SDK_VERSION
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
-        getByName("release") {
-            isMinifyEnabled  = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
-    compileOptions {
-        sourceCompatibility = Project.javaVersion
-        targetCompatibility = Project.javaVersion
-    }
+
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = ProjectProperties.JAVA_VERSION.toString()
     }
 }
+
 dependencies {
-    testImplementation(Dependency.Test.junit)
-    testImplementation(Dependency.Test.mockito)
-    testImplementation(Dependency.Test.mockitoKotlin)
-    testImplementation(Dependency.Test.mockitoInline)
+    implementation(Dependency.UnitTest.JUNIT)
 
-    implementation(Dependency.Coroutine.core)
+    implementation(Dependency.Ui.LOCALDATETIME)
 
-    implementation(Dependency.DI.inject)
+    implementation(Dependency.Hilt.HILT_ANDROID)
+    implementation(Dependency.Hilt.INJECT)
+    kapt(Dependency.Hilt.HILT_ANDROID_COMPILER)
 
-    implementation(Dependency.ThreeTenAndroidBackport.threeTenAbp)
+    implementation(Dependency.Kotlin.COROUTINES_CORE)
+    implementation(Dependency.Kotlin.COROUTINES_ANDROID)
 }

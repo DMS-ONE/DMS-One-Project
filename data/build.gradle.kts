@@ -1,68 +1,64 @@
 plugins {
-    id("com.android.library")
-    kotlin("android")
-    kotlin("kapt")
+    id(BuildPlugins.ANDROID_LIBRARY_PLUGIN)
+    id(BuildPlugins.KOTLIN_ANDROID_PLUGIN)
+    id(BuildPlugins.DAGGER_HILT_PLUGIN)
+    id(BuildPlugins.KOTLIN_KAPT)
 }
 
 android {
-    compileSdk = Project.compileSdk
+    compileSdk = ProjectProperties.COMPILE_SDK_VERSION
 
     defaultConfig {
-        minSdk = Project.minSdk
-        targetSdk = Project.targetSdk
+        minSdk = ProjectProperties.MIN_SDK_VERSION
+        targetSdk = ProjectProperties.TARGET_SDK_VERSION
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
+
     compileOptions {
-        sourceCompatibility = Project.javaVersion
-        targetCompatibility = Project.javaVersion
+        sourceCompatibility = ProjectProperties.JAVA_VERSION
+        targetCompatibility = ProjectProperties.JAVA_VERSION
     }
+
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = ProjectProperties.JAVA_VERSION.toString()
     }
 }
 
 dependencies {
     implementation(project(":domain"))
+    implementation(Dependency.Moshi.MOSHI)
+    kapt(Dependency.Moshi.MOSHI_COMPILER)
 
-    implementation(Dependency.Moshi.moshi)
-    kapt(Dependency.Moshi.moshiCompiler)
+    implementation(Dependency.Ui.LOCALDATETIME)
 
-    testImplementation(Dependency.Test.junit)
-    testImplementation(Dependency.Test.mockito)
-    androidTestImplementation(Dependency.Test.androidJunit)
-    testImplementation(Dependency.Test.mockitoKotlin)
-    testImplementation(Dependency.Test.mockitoInline)
-    testImplementation(Dependency.Test.threeTenAbp)
+    implementation(Dependency.Hilt.HILT_ANDROID)
+    implementation(Dependency.Hilt.INJECT)
+    kapt(Dependency.Hilt.HILT_ANDROID_COMPILER)
 
-    implementation(Dependency.Network.retrofit)
-    implementation(Dependency.Network.gsonConverter)
-    implementation(Dependency.Network.okhttp)
+    implementation(Dependency.Retrofit.RETROFIT)
+    implementation(Dependency.Retrofit.RETROFIT_CONVERTER_GSON)
 
-    implementation(Dependency.LocalStorage.room)
-    kapt(Dependency.LocalStorage.roomCompiler)
+    implementation(Dependency.Retrofit.OKHTTP_LOGGING)
 
-    implementation(Dependency.Coroutine.core)
+    implementation(Dependency.Kotlin.COROUTINES_CORE)
+    implementation(Dependency.Kotlin.COROUTINES_ANDROID)
 
-    implementation(Dependency.DI.inject)
+    testImplementation(Dependency.UnitTest.JUNIT)
+    testImplementation(Dependency.UnitTest.MOCKITO)
+    testImplementation(Dependency.UnitTest.MOCKITO_KOTLIN)
+    testImplementation(Dependency.UnitTest.MOCKITO_INLINE)
 
-    implementation(Dependency.DI.hiltAndroid)
-    kapt(Dependency.DI.hiltCompiler)
-
-    implementation(Dependency.ThreeTenAndroidBackport.threeTenAbp)
-
-    implementation(Dependency.WorkManager.ktx)
-    implementation(Dependency.WorkManager.hiltExtension)
-
-    implementation(Dependency.LocalStorage.sharedPreference)
-
-    implementation(Dependency.Socket.socketIo){
-        exclude (group = "org.json", module = "json")
-    }
+    testImplementation(Dependency.CoroutineTest.COROUTINES_TEST)
 }

@@ -18,3 +18,4 @@ rootProject.name = "App"
 include (":presentation")
 include (":data")
 include (":domain")
+include(":di")

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">App</string>
+    <string name="following">following</string>
+    <string name="follower">follower</string>
 </resources>

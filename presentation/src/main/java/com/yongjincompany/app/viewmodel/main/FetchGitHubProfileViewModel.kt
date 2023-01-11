@@ -30,7 +30,7 @@ class FetchGitHubProfileViewModel @Inject constructor(
             }.onFailure {
                 when (it) {
                     is ForbiddenException -> {
-                        event(ErrorMessage("권한 때문에 요청이 거절되었습니다"))
+                        event(ErrorMessage("너무 많은 요청을 보냈습니다"))
                     }
 
                     is UnauthorizedException -> {

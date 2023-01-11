@@ -42,11 +42,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>(
 
     private fun setProfileValue(gitHubProfileData: GitHubProfileEntity) {
         gitHubProfileData.let {
-            binding.followerNum.text = it.followers.toString()
-            binding.followingNum.text = it.following.toString()
-            binding.description.text = it.bio ?: "난 우주최강 개발자"
+            binding.tvFollowerNum.text = it.followers.toString()
+            binding.tvFollowingNum.text = it.following.toString()
+            binding.tvDescription.text = it.bio ?: "난 우주최강 개발자"
             binding.ivProfile.loadFromUrl(it.avatarUrl)
-            binding.name.text = it.name ?: it.login
+            binding.tvName.text = it.name ?: it.login
         }
     }
 }

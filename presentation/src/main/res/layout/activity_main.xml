@@ -20,7 +20,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
@@ -32,36 +32,36 @@
             app:layout_constraintTop_toBottomOf="@+id/iv_profile" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
+            android:id="@+id/gl_midline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
 
         <TextView
-            android:id="@+id/txt_following"
+            android:id="@+id/tv_following"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="40dp"
             android:text="@string/following"
             android:textColor="#C6C6C6"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/name" />
+            app:layout_constraintEnd_toStartOf="@+id/gl_midline"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
         <TextView
-            android:id="@+id/txt_follower"
+            android:id="@+id/tv_follower"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
             android:text="@string/follower"
             android:textColor="#C6C6C6"
-            app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/name" />
+            app:layout_constraintStart_toStartOf="@+id/gl_midline"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
         <TextView
-            android:id="@+id/following_num"
+            android:id="@+id/tv_following_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -69,11 +69,11 @@
             android:textColor="@color/white"
             android:textSize="15sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/txt_following"
-            app:layout_constraintTop_toBottomOf="@+id/name" />
+            app:layout_constraintStart_toEndOf="@+id/tv_following"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
         <TextView
-            android:id="@+id/follower_num"
+            android:id="@+id/tv_follower_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -81,11 +81,11 @@
             android:textColor="@color/white"
             android:textSize="15sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/txt_follower"
-            app:layout_constraintTop_toBottomOf="@+id/name" />
+            app:layout_constraintStart_toEndOf="@+id/tv_follower"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
         <TextView
-            android:id="@+id/description"
+            android:id="@+id/tv_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
@@ -96,6 +96,6 @@
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_following" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_following" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

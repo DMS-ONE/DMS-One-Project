@@ -23,8 +23,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(
         super.onCreate(savedInstanceState)
 
         val random = (0..3).random()
+        val randomName = nameList[random]
 
-        vm.fetchGitHubProfile(nameList[random])
+        vm.fetchGitHubProfile(randomName)
 
         repeatOnStarted {
             vm.fetchGitHubProfileEvent.collect { event -> handleEvent(event) }

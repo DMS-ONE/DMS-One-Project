@@ -44,15 +44,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(
         gitHubProfileData.let {
             binding.followerNum.text = it.followers.toString()
             binding.followingNum.text = it.following.toString()
-            binding.description.text = it.bio
+            binding.description.text = it.bio ?: "난 우주최강 개발자"
             binding.ivProfile.loadFromUrl(it.avatarUrl)
             binding.name.text = it.name ?: it.login
-
-            /*if (it.name == null) {
-                binding.name.text = it.login
-            } else {
-                binding.name.text = it.name
-            }*/
         }
     }
 }

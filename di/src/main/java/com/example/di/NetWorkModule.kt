@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 @InstallIn(SingletonComponent::class)
 object NetWorkModule {
 
-    private const val BASE_URL = "http://github/"
+    private const val BASE_URL = "https://api.github.com/"
 
     @Provides
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor =

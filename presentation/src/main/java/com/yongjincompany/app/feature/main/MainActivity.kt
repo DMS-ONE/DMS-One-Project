@@ -22,10 +22,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val random = (0..3).random()
-        val randomName = nameList[random]
+        val random = (0..2).random()
 
-        vm.fetchGitHubProfile(randomName)
+        vm.fetchGitHubProfile(nameList[random])
 
         repeatOnStarted {
             vm.fetchGitHubProfileEvent.collect { event -> handleEvent(event) }
@@ -47,12 +46,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(
             binding.followingNum.text = it.following.toString()
             binding.description.text = it.bio
             binding.ivProfile.loadFromUrl(it.avatarUrl)
+            binding.name.text = it.name ?: it.login
 
-            if (it.name == null) {
+            /*if (it.name == null) {
                 binding.name.text = it.login
             } else {
                 binding.name.text = it.name
-            }
+            }*/
         }
     }
 }

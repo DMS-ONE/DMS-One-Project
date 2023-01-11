@@ -41,15 +41,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>(
     }
 
     private fun setProfileValue(gitHubProfileData: GitHubProfileEntity) {
-        binding.followerNum.text = gitHubProfileData.followers.toString()
-        binding.followingNum.text = gitHubProfileData.following.toString()
-        binding.description.text = gitHubProfileData.bio
-        binding.ivProfile.loadFromUrl(gitHubProfileData.avatarUrl)
+        gitHubProfileData.let {
+            binding.followerNum.text = it.followers.toString()
+            binding.followingNum.text = it.following.toString()
+            binding.description.text = it.bio
+            binding.ivProfile.loadFromUrl(it.avatarUrl)
 
-        if(gitHubProfileData.name == null) {
-            binding.name.text = gitHubProfileData.login
-        } else {
-            binding.name.text = gitHubProfileData.name
+            if (it.name == null) {
+                binding.name.text = it.login
+            } else {
+                binding.name.text = it.name
+            }
         }
     }
 }

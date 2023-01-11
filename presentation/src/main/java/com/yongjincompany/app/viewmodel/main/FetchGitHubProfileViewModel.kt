@@ -8,7 +8,6 @@ import com.yongjincompany.app.viewmodel.main.FetchGitHubProfileViewModel.FetchGi
 import com.yongjincompany.domain.entity.profile.GitHubProfileEntity
 import com.yongjincompany.domain.exception.ForbiddenException
 import com.yongjincompany.domain.exception.UnauthorizedException
-import com.yongjincompany.domain.exception.UnknownException
 import com.yongjincompany.domain.usecase.profile.GitHubProfileUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -52,7 +51,7 @@ class FetchGitHubProfileViewModel @Inject constructor(
         }
     }
 
-    sealed class FetchGitHubProfileEvent() {
+    sealed class FetchGitHubProfileEvent {
 
         data class FetchGitHubProfile(val gitHubProfileEntity: GitHubProfileEntity) : FetchGitHubProfileEvent()
 

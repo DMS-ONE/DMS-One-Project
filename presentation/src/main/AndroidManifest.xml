@@ -13,6 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App"
         android:usesCleartextTraffic="true">
+
+        <activity
+            android:name=".feature.home.SelectActivity"
+            android:exported="false" />
+
         <activity
             android:name=".feature.main.MainActivity"
             android:exported="true">

@@ -1,9 +1,11 @@
 package com.yongjincompany.app.feature.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.yongjincompany.app.R
 import com.yongjincompany.app.databinding.ActivityMainBinding
+import com.yongjincompany.app.feature.home.SelectActivity
 import com.yongjincompany.app.util.BaseActivity
 import com.yongjincompany.app.util.loadFromUrl
 import com.yongjincompany.app.util.repeatOnStarted
@@ -28,6 +30,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(
 
         repeatOnStarted {
             vm.fetchGitHubProfileEvent.collect { event -> handleEvent(event) }
+        }
+    }
+
+    override fun initView() {
+        super.initView()
+
+        binding.btnNext.setOnClickListener {
+            val intent = Intent(baseContext, SelectActivity::class.java)
+            startActivity(intent)
         }
     }
 

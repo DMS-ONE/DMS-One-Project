@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#202020">
+        android:background="@color/dark_black">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_profile"
@@ -44,6 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="40dp"
+            android:fontFamily="@font/noto_sans_kr_regular"
             android:text="@string/following"
             android:textColor="#C6C6C6"
             app:layout_constraintEnd_toStartOf="@+id/gl_midline"
@@ -55,6 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/noto_sans_kr_regular"
             android:text="@string/follower"
             android:textColor="#C6C6C6"
             app:layout_constraintStart_toStartOf="@+id/gl_midline"
@@ -66,9 +68,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/noto_sans_kr_bold"
             android:textColor="@color/white"
             android:textSize="15sp"
-            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/tv_following"
             app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
@@ -78,9 +80,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
+            android:fontFamily="@font/noto_sans_kr_bold"
             android:textColor="@color/white"
             android:textSize="15sp"
-            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/tv_follower"
             app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
@@ -91,11 +93,24 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="48dp"
             android:layout_marginEnd="40dp"
+            android:fontFamily="@font/noto_sans_kr_regular"
             android:gravity="center"
             android:text=""
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_following" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_next"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/main_btn_background"
+            android:fontFamily="@font/noto_sans_kr_black"
+            android:text="@string/let_s_go"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

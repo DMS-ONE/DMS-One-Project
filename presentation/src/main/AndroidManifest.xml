@@ -13,11 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".feature.dledledle.SeunghoonActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".feature.home.SelectActivity"
             android:exported="false" />
-
         <activity
             android:name=".feature.main.MainActivity"
             android:exported="true">

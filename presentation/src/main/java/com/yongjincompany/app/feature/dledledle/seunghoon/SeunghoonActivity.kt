@@ -1,4 +1,4 @@
-package com.yongjincompany.app.feature.dledledle
+package com.yongjincompany.app.feature.dledledle.seunghoon
 
 import com.yongjincompany.app.R
 import com.yongjincompany.app.databinding.ActivitySeunghoonBinding

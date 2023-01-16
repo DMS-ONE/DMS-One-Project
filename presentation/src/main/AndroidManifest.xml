@@ -14,7 +14,7 @@
         android:theme="@style/Theme.App"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".feature.dledledle.SeunghoonActivity"
+            android:name=".feature.dledledle.seunghoon.SeunghoonActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

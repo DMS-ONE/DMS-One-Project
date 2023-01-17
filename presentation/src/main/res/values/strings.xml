@@ -6,4 +6,6 @@
     <string name="leeyongjin">이용진</string>
     <string name="choihaeun">최하은</string>
     <string name="jungseunghoon">정승훈</string>
+    <string name="name">Name</string>
+    <string name="country">Country</string>
 </resources>

@@ -16,7 +16,6 @@ class RemoteAgeDataSourceImpl @Inject constructor(
             .httpRequest {
                 agifyioApi.fetchAge(
                     name = name,
-                    countryId = countryId,
                 )
             }.sendRequest()
 }

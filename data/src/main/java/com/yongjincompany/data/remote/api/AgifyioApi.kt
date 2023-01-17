@@ -9,6 +9,5 @@ interface AgifyioApi {
     @GET("/")
     suspend fun fetchAge(
         @Query("name") name: String,
-        @Query("country_id") countryId: String,
     ): AgeResponse
 }

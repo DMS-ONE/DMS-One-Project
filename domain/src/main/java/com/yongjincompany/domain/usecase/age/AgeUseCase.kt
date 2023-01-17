@@ -10,7 +10,7 @@ import javax.inject.Inject
 class AgeUseCase @Inject constructor(
     private val ageRepository: AgeRepository,
 ) : UseCase<AgeParam, Flow<AgeEntity>>() {
-    override suspend fun execute(data: AgeParam): Flow<AgeEntity> {
+    override suspend fun execute(data: AgeParam): Flow<AgeEntity> =
         ageRepository.fetchAge(
             name = data.name,
             countryId = data.countryId,

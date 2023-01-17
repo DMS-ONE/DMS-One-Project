@@ -1,5 +1,6 @@
 package com.example.di
 
+import com.yongjincompany.data.remote.api.AgifyioApi
 import com.yongjincompany.data.remote.api.GitHubProfileApi
 import dagger.Module
 import dagger.Provides
@@ -9,12 +10,15 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 
 @Module
 @InstallIn(SingletonComponent::class)
 object NetWorkModule {
 
     private const val BASE_URL = "https://api.github.com/"
+
+    private const val AGIFYIO_BASE_URL = "https://api.agify.io"
 
     @Provides
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor =
@@ -41,4 +45,8 @@ object NetWorkModule {
     @Provides
     fun provideGitHubProfileApi(retrofit: Retrofit): GitHubProfileApi =
         retrofit.create(GitHubProfileApi::class.java)
+
+    @Provides
+    fun providedeAgifyioApi(retrofit: Retrofit): AgifyioApi =
+        retrofit.create(AgifyioApi::class.java)
 }

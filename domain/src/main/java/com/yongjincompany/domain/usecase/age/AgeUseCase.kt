@@ -15,5 +15,4 @@ class AgeUseCase @Inject constructor(
             name = data.name,
             countryId = data.countryId,
         )
-    }
 }

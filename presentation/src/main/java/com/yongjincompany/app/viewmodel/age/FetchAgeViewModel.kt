@@ -12,6 +12,9 @@ import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import com.yongjincompany.app.viewmodel.age.FetchAgeViewModel.FetchAgeEvent.FetchAge
+import com.yongjincompany.app.viewmodel.age.FetchAgeViewModel.FetchAgeEvent.ErrorMessage
+import com.yongjincompany.domain.exception.ForbiddenException
+import com.yongjincompany.domain.exception.UnauthorizedException
 
 @HiltViewModel
 class FetchAgeViewModel @Inject constructor(
@@ -34,6 +37,20 @@ class FetchAgeViewModel @Inject constructor(
                     )
                 ).collect {
                     event(FetchAge(it.toData()))
+                }
+            }.onFailure{
+                when (it) {
+                    is ForbiddenException -> {
+                        event(ErrorMessage("너무 많은 요청을 보냈습니다"))
+                    }
+
+                    is UnauthorizedException -> {
+                        event(ErrorMessage("인증이 필요합니다"))
+                    }
+
+                    else -> {
+                        event(ErrorMessage("알 수 없는 에러"))
+                    }
                 }
             }
         }

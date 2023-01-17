@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.dledledle.haeun.HaeunActivity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dark_black" >
+
+        <TextView
+            android:id="@+id/tv_haeun_title"
+            android:text="@string/haeun_title"
+            style="@style/TextViewTitleHaeun"
+            android:layout_marginTop="70dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/et_haeun_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="130dp"
+            android:backgroundTint="@color/white"
+            android:hint="@string/haeun_hint_question"
+            android:lines="1"
+            android:singleLine="true"
+            android:textColorHint="@color/white"
+            app:layout_constraintEnd_toEndOf="@+id/tv_haeun_title"
+            app:layout_constraintStart_toStartOf="@+id/tv_haeun_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_haeun_title" />
+
+        <Button
+            android:id="@+id/bt_haeun_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/gray"
+            android:text="@string/haeun_bt_text"
+            app:layout_constraintEnd_toEndOf="@+id/et_haeun_question"
+            app:layout_constraintStart_toStartOf="@+id/et_haeun_question"
+            app:layout_constraintTop_toBottomOf="@+id/et_haeun_question" />
+
+        <ImageView
+            android:id="@+id/img_haeun_ox"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="80dp"
+            app:layout_constraintEnd_toEndOf="@+id/bt_haeun_question"
+            app:layout_constraintStart_toStartOf="@+id/bt_haeun_question"
+            app:layout_constraintTop_toBottomOf="@+id/bt_haeun_question" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

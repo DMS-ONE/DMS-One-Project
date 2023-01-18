@@ -8,14 +8,8 @@ import javax.inject.Inject
 class RemoteAgeDataSourceImpl @Inject constructor(
     private val agifyioApi: AgifyioApi,
 ) : RemoteAgeDataSource {
-    override suspend fun fetchAge(
-        name: String,
-        countryId: String,
-    ): AgeResponse =
+    override suspend fun fetchAge(name: String): AgeResponse =
         HttpHandler<AgeResponse>()
-            .httpRequest {
-                agifyioApi.fetchAge(
-                    name = name,
-                )
-            }.sendRequest()
+            .httpRequest { agifyioApi.fetchAge(name) }
+            .sendRequest()
 }

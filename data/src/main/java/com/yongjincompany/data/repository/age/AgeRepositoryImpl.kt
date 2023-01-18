@@ -13,22 +13,13 @@ class AgeRepositoryImpl @Inject constructor(
 ) : AgeRepository {
     override suspend fun fetchAge(
         name: String,
-        countryId: String,
     ): Flow<AgeEntity> =
-        flow {
-            emit(
-                remoteAgeDataSource.fetchAge(
-                    name = name,
-                    countryId = countryId,
-                ).toEntity()
-            )
-        }
+        flow { emit(remoteAgeDataSource.fetchAge(name).toEntity()) }
 
     private fun AgeResponse.toEntity() =
         AgeEntity(
             age = age,
             count = count,
-            countryId = countryId,
             name = name,
         )
 }

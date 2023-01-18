@@ -18,15 +18,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_activity_seunghoon_country"
-            style="@style/BaseViewSeunghoon"
-            android:hint="@string/country"
-            android:paddingStart="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_activity_seunghoon_name" />
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_activity_seunghoon_start"
             style="@style/BaseViewSeunghoon"

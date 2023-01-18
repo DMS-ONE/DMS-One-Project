@@ -6,6 +6,5 @@ import kotlinx.coroutines.flow.Flow
 interface AgeRepository {
     suspend fun fetchAge(
         name: String,
-        countryId: String,
     ): Flow<AgeEntity>
 }

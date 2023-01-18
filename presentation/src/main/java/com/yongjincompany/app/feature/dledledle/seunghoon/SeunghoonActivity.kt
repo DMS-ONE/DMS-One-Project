@@ -34,14 +34,10 @@ class SeunghoonActivity : BaseActivity<ActivitySeunghoonBinding>(
     private fun initStartButton() {
         with(binding) {
             btnActivitySeunghoonStart.setOnClickListener {
-                val name = etActivitySeunghoonName.text.toString()
-                val countryId = etActivitySeunghoonCountry.text.toString()
-
-                if (name.isNotBlank() && countryId.isNotBlank()) {
-                    vm.fetchAge(
-                        name = "hoon",
-                        countryId = "KR",
-                    )
+                etActivitySeunghoonName.text.toString().run {
+                    if(this.isNotBlank()){
+                        vm.fetchAge(this)
+                    }
                 }
             }
         }

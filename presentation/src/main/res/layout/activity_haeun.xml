@@ -10,13 +10,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/dark_black" >
+        android:background="@color/dark_black">
 
         <TextView
             android:id="@+id/tv_haeun_title"
-            android:text="@string/haeun_title"
             style="@style/TextViewTitleHaeun"
             android:layout_marginTop="70dp"
+            android:text="@string/haeun_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

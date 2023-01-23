@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.yongjincompany.app.databinding.ActivitySelectBinding
 import com.yongjincompany.app.util.BaseActivity
 import com.yongjincompany.app.R
+import com.yongjincompany.app.feature.dledledle.haeun.HaeunActivity
 import com.yongjincompany.app.feature.dledledle.seunghoon.SeunghoonActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -34,7 +35,12 @@ class SelectActivity : BaseActivity<ActivitySelectBinding>(
         }
 
         binding.cvChoihaeunCard.setOnClickListener {
-            //TODO : 하은 카드 눌렀을 때 넘어가는 동작 만들어주기
+            startActivity(
+                Intent(
+                    this,
+                    HaeunActivity::class.java
+                )
+            )
         }
     }
 }

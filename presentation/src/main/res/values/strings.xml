@@ -10,5 +10,5 @@
     <string name="country">Country</string>
     <string name="haeun_title">질문을 하면 O/X 답을 해줘요!</string>
     <string name="haeun_hint_question">질문을 입력해보세요!</string>
-    <string name="haeun_bt_text">질문하기</string>
+    <string name="haeun_btn_text">질문하기</string>
 </resources>

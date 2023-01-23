@@ -16,9 +16,6 @@
         <activity
             android:name=".HaeunActivity"
             android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
         </activity>
         <activity
             android:name=".feature.dledledle.seunghoon.SeunghoonActivity"

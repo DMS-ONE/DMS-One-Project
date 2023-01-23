@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:backgroundTint="@color/gray"
-            android:text="@string/haeun_bt_text"
+            android:text="@string/haeun_btn_text"
             app:layout_constraintEnd_toEndOf="@+id/et_haeun_question"
             app:layout_constraintStart_toStartOf="@+id/et_haeun_question"
             app:layout_constraintTop_toBottomOf="@+id/et_haeun_question" />

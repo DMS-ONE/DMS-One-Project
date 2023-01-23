@@ -11,6 +11,8 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
+import javax.inject.Named
+import javax.inject.Qualifier
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -19,6 +21,14 @@ object NetWorkModule {
     private const val BASE_URL = "https://api.github.com/"
 
     private const val AGIFYIO_BASE_URL = "https://api.agify.io"
+
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class Github
+
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class Agifyio
 
     @Provides
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor =
@@ -32,6 +42,7 @@ object NetWorkModule {
         .addInterceptor(httpLoggingInterceptor)
         .build()
 
+    @Github
     @Provides
     fun provideRetrofit(
         okHttpClient: OkHttpClient
@@ -42,11 +53,27 @@ object NetWorkModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
+    @Agifyio
     @Provides
-    fun provideGitHubProfileApi(retrofit: Retrofit): GitHubProfileApi =
+    fun provideAgeRetrofit(
+        okHttpClient: OkHttpClient
+    ): Retrofit =
+        Retrofit.Builder()
+            .baseUrl(AGIFYIO_BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+
+    @Provides
+    fun provideGitHubProfileApi(
+        @Github retrofit: Retrofit,
+    ): GitHubProfileApi =
         retrofit.create(GitHubProfileApi::class.java)
 
     @Provides
-    fun providedeAgifyioApi(retrofit: Retrofit): AgifyioApi =
+    fun provideAgifyioApi(
+        @Agifyio retrofit: Retrofit,
+    ): AgifyioApi =
         retrofit.create(AgifyioApi::class.java)
 }

@@ -7,6 +7,7 @@ import com.yongjincompany.app.R
 import com.yongjincompany.app.databinding.ActivitySeunghoonBinding
 import com.yongjincompany.app.util.BaseActivity
 import com.yongjincompany.app.util.repeatOnStarted
+import com.yongjincompany.app.util.visible
 import com.yongjincompany.app.viewmodel.age.FetchAgeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import com.yongjincompany.app.viewmodel.age.FetchAgeViewModel.FetchAgeEvent
@@ -63,10 +64,6 @@ class SeunghoonActivity : BaseActivity<ActivitySeunghoonBinding>(
                 tvActivitySeunghoonCountUnit.visible()
             }
         }
-    }
-
-    private fun View.visible(){
-        visibility = View.VISIBLE
     }
 
     private fun setParseInt(

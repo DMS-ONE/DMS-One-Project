@@ -48,9 +48,9 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginTop="80dp"
-            app:layout_constraintEnd_toEndOf="@+id/bt_haeun_question"
-            app:layout_constraintStart_toStartOf="@+id/bt_haeun_question"
-            app:layout_constraintTop_toBottomOf="@+id/bt_haeun_question" />
+            app:layout_constraintEnd_toEndOf="@+id/btn_haeun_question"
+            app:layout_constraintStart_toStartOf="@+id/btn_haeun_question"
+            app:layout_constraintTop_toBottomOf="@+id/btn_haeun_question" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

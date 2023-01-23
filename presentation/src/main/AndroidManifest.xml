@@ -14,7 +14,7 @@
         android:theme="@style/Theme.App"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".HaeunActivity"
+            android:name=".feature.dledledle.haeun.HaeunActivity"
             android:exported="false">
         </activity>
         <activity

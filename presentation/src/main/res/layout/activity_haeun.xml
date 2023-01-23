@@ -47,7 +47,7 @@
             app:layout_constraintTop_toBottomOf="@+id/et_haeun_question" />
 
         <ImageView
-            android:id="@+id/img_haeun_ox"
+            android:id="@+id/i_haeun_ox"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginTop="80dp"

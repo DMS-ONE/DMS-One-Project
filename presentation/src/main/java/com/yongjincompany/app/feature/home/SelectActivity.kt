@@ -35,7 +35,6 @@ class SelectActivity : BaseActivity<ActivitySelectBinding>(
         }
 
         binding.cvChoihaeunCard.setOnClickListener {
-            //TODO : 하은 카드 눌렀을 때 넘어가는 동작 만들어주기
             startActivity(
                 Intent(
                     this,

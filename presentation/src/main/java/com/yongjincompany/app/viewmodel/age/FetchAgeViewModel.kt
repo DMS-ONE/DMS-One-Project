@@ -7,7 +7,6 @@ import com.yongjincompany.app.util.asEventFlow
 import com.yongjincompany.domain.entity.age.AgeEntity
 import com.yongjincompany.domain.usecase.age.AgeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import com.yongjincompany.app.viewmodel.age.FetchAgeViewModel.FetchAgeEvent.FetchAge
@@ -26,7 +25,7 @@ class FetchAgeViewModel @Inject constructor(
     fun fetchAge(
         name: String,
     ) {
-        viewModelScope.launch(IO) {
+        viewModelScope.launch {
             kotlin.runCatching {
                 ageUseCase.execute(name).collect {
                     event(FetchAge(it.toData()))
@@ -50,7 +49,7 @@ class FetchAgeViewModel @Inject constructor(
     }
 
     private fun event(event: FetchAgeEvent) {
-        viewModelScope.launch(IO) {
+        viewModelScope.launch {
             _fetchAgeEvent.emit(event)
         }
     }

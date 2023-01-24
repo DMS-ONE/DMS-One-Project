@@ -39,7 +39,7 @@
             android:id="@+id/tv_activity_seunghoon_age_unit"
             style="@style/TextViewPrimarySeunghoon"
             android:layout_marginStart="4dp"
-            android:text="@string/age"
+            android:text="@string/seunghoon_age"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@id/tv_activity_seunghoon_age"
             app:layout_constraintStart_toEndOf="@id/tv_activity_seunghoon_age" />
@@ -55,7 +55,7 @@
             android:id="@+id/tv_activity_seunghoon_count_unit"
             style="@style/TextViewPrimarySeunghoon"
             android:layout_marginStart="4dp"
-            android:text="@string/has_tried"
+            android:text="@string/seunghoon_has_tried"
             android:textSize="24sp"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@id/tv_activity_seunghoon_count"

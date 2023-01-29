@@ -1,5 +1,7 @@
 package com.example.di
 
+import com.yongjincompany.data.remote.datasource.RemoteAgeDataSource
+import com.yongjincompany.data.remote.datasource.RemoteAgeDataSourceImpl
 import com.yongjincompany.data.remote.datasource.RemoteGitHubProfileDataSource
 import com.yongjincompany.data.remote.datasource.RemoteGitHubProfileDataSourceImpl
 import dagger.Binds
@@ -14,4 +16,9 @@ abstract class RemoteDataSourceModule {
     abstract fun provideRemoteGitHubProfileDataSource(
         remoteGitHubProfileDataSourceImpl: RemoteGitHubProfileDataSourceImpl
     ): RemoteGitHubProfileDataSource
+
+    @Binds
+    abstract fun provideRemoteAgeDataSource(
+        ageDataSourceImpl: RemoteAgeDataSourceImpl,
+    ): RemoteAgeDataSource
 }
